@@ -1,24 +1,27 @@
 <p>eleve-accueil works!</p>
-<!-- <button 
+<button 
     type="submit"
     (click)="Logout()">
     Logout
 </button>
+<!-- <br>
 <br>
-<br>
-<p>{{userCoins}}</p>
+<p>{{userCoins}}</p>-->
 
 <br>
 <br>
-<div *ngFor="let quest of quests">
-    <h3>{{quest.name}}</h3>
-    <p>{{quest.description}}</p>
-    <p>{{quest.status}}</p>
-    <p>{{quest.credit}}</p>
-    <button
-        type="button" 
-        (click)="AcceptQuest(quest.id)">
-        Accepter 
-    </button>
-    <br>
-</div> -->
+<div>
+    <div *ngFor="let quest of quests; let i = index">
+        <h3>{{quest.name}}</h3>
+        <p>{{quest.description}}</p>
+        <p>{{quest.status}}</p>
+        <p>{{quest.credit}}</p>
+        <button
+            type="button" 
+            (click)="AcceptQuest(i)">
+            Accepter 
+        </button>
+        <br>
+    </div> 
+</div>
+ 

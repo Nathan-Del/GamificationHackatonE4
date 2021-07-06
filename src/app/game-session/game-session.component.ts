@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./game-session.component.css']
 })
 export class GameSessionComponent implements OnInit {
+  sessionValue: string = "";
   inputUsername: string;
   inputPassword: string;
   body: any;
@@ -15,11 +16,22 @@ export class GameSessionComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
+    //localStorage.removeItem("loginRole");
+    this.sessionValue = localStorage.getItem("loginRole");
+    console.log(this.sessionValue);
+    if(this.sessionValue == "admin"){
+      this.router.navigateByUrl(`/admin`);
+    }
+    else if(this.sessionValue == "eleve"){
+      this.router.navigateByUrl(`/eleve`);
+    }
+    else{
+      this.router.navigateByUrl(`/`);
+    }
+
   }
 
   LoginUser(){
-    // this.body.push(this.inputUsername);
-    // this.body.push(this.inputPassword);
 
     this.body = { username : this.inputUsername, 
                   password : this.inputPassword };
@@ -29,22 +41,24 @@ export class GameSessionComponent implements OnInit {
     this.dataService.postLogin(this.body).subscribe(
       (response: any) => 
       {
-        console.log("response : " + response);
+        console.log("response : ", response);
         sessionStorage.setItem("token-session", response.token);
       
         this.dataService.getUser(response.user_id, response.token).subscribe(
           (userResponse: any) =>
           {
-            console.log("userResponse : " + userResponse);
-            if(response.sucess)
+            console.log("userResponse : ", userResponse);
+            if(response.success)
             {
-              sessionStorage.setItem("isLogin", "true");
+              localStorage.setItem("isLogin", "true");
               if(userResponse.admin)
               {
+                localStorage.setItem("loginRole", "admin");
                 this.router.navigateByUrl(`/admin`);
               }
               else
               {
+                localStorage.setItem("loginRole", "eleve");
                 this.router.navigateByUrl(`/eleve`);
               }
             }
@@ -56,6 +70,7 @@ export class GameSessionComponent implements OnInit {
         console.log("ERROR : ", error);
       }
     )
+    
   }
 
 }

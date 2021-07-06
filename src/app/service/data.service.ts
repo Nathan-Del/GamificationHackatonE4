@@ -16,10 +16,10 @@ export class DataService {
         'Authorization': `Bearer ${auth_token}`
         })
       };
-    return this.http.get(`localhost:3000/users/${id}`, httpOptions);
+    return this.http.get(`http://localhost:3000/users/${id}`, httpOptions);
   }  
   putUser(id: number, body: any){
-    return this.http.put(`localhost:3000/users/${id}`, body);
+    return this.http.put(`http://localhost:3000/users/${id}`, body);
   } 
   postLogin(body: any){
     const httpOptions = {
@@ -28,43 +28,43 @@ export class DataService {
         'Content-Type':  'application/json'
         })
     };
-    return this.http.post(`localhost:3000/login`, body, httpOptions);
+    return this.http.post(`http://localhost:3000/login`, body, httpOptions);
   } 
   
   
 
   //QUEST
   getQuest(){
-    return this.http.get(`localhost:3000/quests`);
+    return this.http.get(`http://localhost:3000/quests`);
   }
   getQuestbyId(id: number){
-    return this.http.get(`localhost:3000/quest/${id}`);
+    return this.http.get(`http://localhost:3000/quest/${id}`);
   }
   putQuest(id: number, body: any){
-    return this.http.put(`localhost:3000/quest/${id}`, body);
+    return this.http.put(`http://localhost:3000/quest/${id}`, body);
   }  
   postQuest(body: any){
-    return this.http.post(`localhost:3000/quest/`, body);
+    return this.http.post(`http://localhost:3000/quest/`, body);
   } 
   deleteQuest(id: number){
-    return this.http.delete(`localhost:3000/quest/${id}`);
+    return this.http.delete(`http://localhost:3000/quest/${id}`);
   } 
 
   //PRODUCT
   getProducts(){
-    return this.http.get(`localhost:3000/Products`);
+    return this.http.get(`http://localhost:3000/Products`);
   }
   getProductbyId(id: number){
-    return this.http.get(`localhost:3000/Product/${id}`);
+    return this.http.get(`http://localhost:3000/Product/${id}`);
   }
   putProduct(id: number, body: any){
-    return this.http.put(`localhost:3000/Product/${id}`, body);
+    return this.http.put(`http://localhost:3000/Product/${id}`, body);
   }  
   postProduct(body: any){
-    return this.http.post(`localhost:3000/Product/`, body);
+    return this.http.post(`http://localhost:3000/Product/`, body);
   } 
   deleteProduct(id: number){
-    return this.http.delete(`localhost:3000/Product/${id}`);
+    return this.http.delete(`http://localhost:3000/Product/${id}`);
   } 
   
 }

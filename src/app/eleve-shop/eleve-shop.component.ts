@@ -16,20 +16,20 @@ export class EleveShopComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-  //   this.sessionValue = sessionStorage.getItem("isLogin");
-  //   if(this.sessionValue != "true")
-  //   {
-  //     this.router.navigateByUrl(`/`);
-  //   }
+    this.sessionValue = sessionStorage.getItem("isLogin");
+    if(this.sessionValue != "true")
+    {
+      this.router.navigateByUrl(`/`);
+    }
 
-  //   //GET ALL PRODUCTS
-  //   this.dataService.getProducts().subscribe(
-  //     (response: any) => 
-  //     {
-  //       console.log("Products response : " + response);
-  //       this.products.push(response);
-  //     }
-  //   )
+    // //GET ALL PRODUCTS
+    // this.dataService.getProducts().subscribe(
+    //   (response: any) => 
+    //   {
+    //     console.log("Products response : " + response);
+    //     this.products.push(response);
+    //   }
+    // )
 
   //   //GET USER COINS
   //   this.dataService.getUser(this.userID).subscribe(

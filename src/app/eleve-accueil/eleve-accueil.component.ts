@@ -9,16 +9,21 @@ import { Router } from '@angular/router';
 })
 export class EleveAccueilComponent implements OnInit {
   sessionValue: string = "";
-  quests: any[] = [];
+  quests: any;
   userID: number;
   userCoins: string;
 
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this.sessionValue = sessionStorage.getItem("isLogin");
-    if(this.sessionValue != "true")
+    this.sessionValue = localStorage.getItem("isLogin");
+    console.log(this.sessionValue);
+    if(this.sessionValue == "true")
     {
+      //console.log(this.sessionValue);
+      //this.router.navigateByUrl(`/`);
+    }
+    else{
       this.router.navigateByUrl(`/`);
     }
 
@@ -26,8 +31,9 @@ export class EleveAccueilComponent implements OnInit {
     this.dataService.getQuest().subscribe(
       (response: any) => 
       {
-        console.log("Response : " + response);
-        this.quests.push(response);
+        console.log("Quest Response : ", response);
+        this.quests = response;
+        console.log("tab : ", this.quests);
       }
     )
 
@@ -43,21 +49,22 @@ export class EleveAccueilComponent implements OnInit {
   }
 
   Logout(){
-    sessionStorage.removeItem("isLogin");
+    localStorage.removeItem("loginRole");
+    localStorage.removeItem("isLogin");
     this.router.navigateByUrl(`/`);
   }
 
-  // const body = { title: 'Angular PUT Request Example' };
-  //   this.http.put<Article>('https://jsonplaceholder.typicode.com/posts/1', body)
+  // // const body = { title: 'Angular PUT Request Example' };
+  // //   this.http.put<Article>('https://jsonplaceholder.typicode.com/posts/1', body)
 
-  AcceptQuest(id: number){
-    const statusQuest = { status: 'En cours'};
-    this.dataService.putQuest(id, statusQuest).subscribe(
-      (response: any) =>
-      {
-        console.log("Accept Quest : " + response);
-      }
-    )
-  }
+  // AcceptQuest(id: number){
+  //   const statusQuest = { status: 'En cours'};
+  //   this.dataService.putQuest(id, statusQuest).subscribe(
+  //     (response: any) =>
+  //     {
+  //       console.log("Accept Quest : " + response);
+  //     }
+  //   )
+  // }
 
 }
