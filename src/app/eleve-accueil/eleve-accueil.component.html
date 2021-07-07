@@ -4,21 +4,30 @@
     (click)="Logout()">
     Logout
 </button>
-<!-- <br>
 <br>
-<p>{{userCoins}}</p>-->
+<button 
+    type="button"
+    (click)="Shop()">
+    Magasin
+</button>
+<br>
+<br>
+<p>Bonjour {{User.username}}</p>
+<p>Pieces : {{User.credits}}</p>
 
 <br>
 <br>
 <div>
-    <div *ngFor="let quest of quests; let i = index">
-        <h3>{{quest.name}}</h3>
-        <p>{{quest.description}}</p>
-        <p>{{quest.status}}</p>
-        <p>{{quest.credit}}</p>
+    <h3>Listes des quêtes :</h3>
+    <div *ngFor="let quest of quests">
+        <h4>Nom : {{quest.name}}</h4>
+        <p>Description : {{quest.description}}</p>
+        <p>Status : {{quest.status}}</p>
+        <p>Récompence : {{quest.credit}} pieces</p>
         <button
             type="button" 
-            (click)="AcceptQuest(i)">
+            [disabled]="quest.status === 'En cours'"
+            (click)="AcceptQuest(quest._id)">
             Accepter 
         </button>
         <br>

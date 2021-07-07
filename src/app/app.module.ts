@@ -8,6 +8,10 @@ import { EleveAccueilComponent } from './eleve-accueil/eleve-accueil.component';
 import { AdminAccueilComponent } from './admin-accueil/admin-accueil.component';
 import { EleveShopComponent } from './eleve-shop/eleve-shop.component';
 import { FormsModule } from '@angular/forms';
+import { AdminAddQuestComponent } from './admin-add-quest/admin-add-quest.component';
+import { AdminModifQuestComponent } from './admin-modif-quest/admin-modif-quest.component';
+import { AdminShopComponent } from './admin-shop/admin-shop.component';
+import { AdminModifShopComponent } from './admin-modif-shop/admin-modif-shop.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { FormsModule } from '@angular/forms';
     GameSessionComponent,
     EleveAccueilComponent,
     AdminAccueilComponent,
-    EleveShopComponent
+    EleveShopComponent,
+    AdminAddQuestComponent,
+    AdminModifQuestComponent,
+    AdminShopComponent,
+    AdminModifShopComponent
   ],
   imports: [
     BrowserModule,

@@ -1,25 +1,35 @@
 <p>eleve-shop works!</p>
 
-<!-- <button 
+<button 
     type="submit"
     (click)="Logout()">
     Logout
-</button> -->
+</button>
+<br>
+<button 
+    type="button"
+    (click)="AccueilEleve()">
+    Accueil Eleve
+</button>
+<br>
+<br>
+<p>Bien joué {{User.username}} !!!</p>
+<p>Vous avez {{User.credits}} pieces.</p>
 
-<!-- <br>
-<br>
-<p>{{userCoins}}</p>
-
 <br>
 <br>
-<div *ngFor="let product of products">
-    <h3>{{product.name}}</h3>
-    <p>{{product.description}}</p>
-    <p>{{product.price}}</p>
-    <button
-        type="button" 
-        (click)="BuyProduct(product.price)">
-        Acheter 
-    </button>
-    <br>
-</div> -->
+<div>
+    <h3>Listes des produits :</h3>
+    <div *ngFor="let product of products">
+        <h3>Nom : {{product.name}}</h3>
+        <p>Description : {{product.description}}</p>
+        <p>Prix : {{product.price}}</p>
+        <button
+            type="button" 
+            [disabled]="User.credits <= product.price"
+            (click)="BuyProduct(product.price)">
+            Acheter 
+        </button>
+        <br>
+    </div>
+</div>

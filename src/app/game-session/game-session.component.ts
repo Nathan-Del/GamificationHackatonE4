@@ -42,7 +42,8 @@ export class GameSessionComponent implements OnInit {
       (response: any) => 
       {
         console.log("response : ", response);
-        sessionStorage.setItem("token-session", response.token);
+        localStorage.setItem("token-session", response.token);
+        localStorage.setItem("user-session-id", response.user_id);
       
         this.dataService.getUser(response.user_id, response.token).subscribe(
           (userResponse: any) =>

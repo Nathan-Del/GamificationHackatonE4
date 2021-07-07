@@ -8,7 +8,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   //USER
-  getUser(id: number, auth_token: string){
+  getUser(id: string, auth_token: string){
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
@@ -18,8 +18,15 @@ export class DataService {
       };
     return this.http.get(`http://localhost:3000/users/${id}`, httpOptions);
   }  
-  putUser(id: number, body: any){
-    return this.http.put(`http://localhost:3000/users/${id}`, body);
+  putUser(id: number, body: any, auth_token: string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${auth_token}`
+        })
+      };
+    return this.http.put(`http://localhost:3000/users/${id}`, body, httpOptions);
   } 
   postLogin(body: any){
     const httpOptions = {
@@ -37,10 +44,10 @@ export class DataService {
   getQuest(){
     return this.http.get(`http://localhost:3000/quests`);
   }
-  getQuestbyId(id: number){
+  getQuestbyId(id: string){
     return this.http.get(`http://localhost:3000/quest/${id}`);
   }
-  putQuest(id: number, body: any){
+  putQuest(id: string, body: any){
     return this.http.put(`http://localhost:3000/quest/${id}`, body);
   }  
   postQuest(body: any){
@@ -54,10 +61,10 @@ export class DataService {
   getProducts(){
     return this.http.get(`http://localhost:3000/Products`);
   }
-  getProductbyId(id: number){
+  getProductbyId(id: string){
     return this.http.get(`http://localhost:3000/Product/${id}`);
   }
-  putProduct(id: number, body: any){
+  putProduct(id: string, body: any){
     return this.http.put(`http://localhost:3000/Product/${id}`, body);
   }  
   postProduct(body: any){

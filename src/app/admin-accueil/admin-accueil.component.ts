@@ -39,16 +39,22 @@ export class AdminAccueilComponent implements OnInit {
   Logout(){
     localStorage.removeItem("loginRole");
     localStorage.removeItem("isLogin");
+    localStorage.removeItem("token-session");
+    localStorage.removeItem("user-session-id");
     this.router.navigateByUrl(`/`);
   }
 
-  // AddQuest(){
-  //   this.router.navigateByUrl(`/manageQuest`)
-  // }
+  Shop(){
+    this.router.navigateByUrl(`/admin/shop`)
+  }
 
-  // ModifQuest(id: number){
-  //   this.router.navigateByUrl(`/manageQuest/${id}`)
-  // }
+  AddQuest(){
+    this.router.navigateByUrl(`/admin/addQuest`)
+  }
+
+  ModifQuest(id: number){
+    this.router.navigateByUrl(`/admin/modifQuest/${id}`)
+  }
 
   DeleteQuest(id: number){
     this.dataService.deleteQuest(id).subscribe(

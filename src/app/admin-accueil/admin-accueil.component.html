@@ -5,13 +5,19 @@
     (click)="Logout()">
     Logout
 </button>
-<!-- <br>
+<br>
+<button
+    type="submit"
+    (click)="Shop()">
+    Magasin
+</button>
+<br>
 <br>
 <button
     type="button" 
     (click)="AddQuest()">
-    Ajouter 
-</button>-->
+    Crée une quête
+</button>
 
 <br>
 <br>
@@ -22,7 +28,7 @@
     <p>{{quest.credit}}</p>
     <button
         type="button" 
-        (click)="ModifQuest(quest.id)">
+        (click)="ModifQuest(quest._id)">
         Modifier 
     </button>
     <button
