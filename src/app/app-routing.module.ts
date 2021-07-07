@@ -9,6 +9,7 @@ import { AdminModifQuestComponent } from './admin-modif-quest/admin-modif-quest.
 import { EleveShopComponent } from './eleve-shop/eleve-shop.component';
 import { AdminShopComponent } from './admin-shop/admin-shop.component';
 import { AdminModifShopComponent } from './admin-modif-shop/admin-modif-shop.component';
+import { AdminUserQuestsComponent } from './admin-user-quests/admin-user-quests.component';
 
 const routes: Routes = [
   {path: '', component: GameSessionComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'eleve/shop', component: EleveShopComponent},
   {path: 'admin/shop', component: AdminShopComponent},
   {path: 'admin/modifShop/:id', component: AdminModifShopComponent},
+  {path: 'admin/userQuest', component: AdminUserQuestsComponent},
   //Redirection
   {path: '', pathMatch: 'full', redirectTo: '/' },
   {path: '**', pathMatch: 'full', redirectTo: '/'},

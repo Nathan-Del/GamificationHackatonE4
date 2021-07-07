@@ -14,23 +14,143 @@
 <br>
 <p>Bonjour {{User.username}}</p>
 <p>Pieces : {{User.credits}}</p>
+{{FinCondition}}
+{{EnCourCondition}}
+{{DispoCondition}}
 
 <br>
 <br>
 <div>
     <h3>Listes des quêtes :</h3>
+    <!-- <div *ngFor="let quest of quests">
+        <h4>Nom : {{quest.name}}</h4>
+        <p>Description : {{quest.description}}</p>
+        <p>Récompence : {{quest.credit}} pieces</p>
+      
+    
+        <div *ngIf="FinCondition">
+            <p>
+                Status : Terminé
+            </p>
+        </div>
+
+        <div *ngIf="EnCourCondition">
+            <p>
+                Status : En Cours
+            </p>
+        </div>
+        
+        <div *ngIf="DispoCondition">
+            <p>
+                Status : Disponible
+            </p>
+            <button
+                type="button" 
+                [disabled]="quest.status === 'En cours'"
+                (click)="AcceptQuest(quest._id)">
+                Accepter 
+            </button>
+        </div>
+
+    </div>   -->
+
     <div *ngFor="let quest of quests">
         <h4>Nom : {{quest.name}}</h4>
         <p>Description : {{quest.description}}</p>
-        <p>Status : {{quest.status}}</p>
         <p>Récompence : {{quest.credit}} pieces</p>
+
         <button
             type="button" 
             [disabled]="quest.status === 'En cours'"
             (click)="AcceptQuest(quest._id)">
             Accepter 
         </button>
-        <br>
+        
+
     </div> 
+
+
+    <!-- <div *ngFor="let quest of quests">
+        <h4>Nom : {{quest.name}}</h4>
+        <p>Description : {{quest.description}}</p>
+        <p>Récompence : {{quest.credit}} pieces</p>
+        <div *ngFor="let q of User.finishQuests">
+            <div *ngIf="quest._id === q">
+                <p>
+                    Status : Terminé
+                </p>
+            </div>
+        </div>
+        
+        <div *ngFor="let i of User.quests ">
+            <p *ngIf="quest._id === i._id">
+                Status : En cours
+            </p>
+            <div *ngFor="let q of User.finishQuests">
+                <div *ngIf="quest._id === q._id">
+                    
+                    <p>
+                        Status : Terminé
+                    </p>
+                </div>
+                <p *ngIf="quest._id != i._id">
+                    Status : Disponible
+                </p>
+            </div> -->
+            <!-- <p *ngIf="quest._id != i._id">
+                Status : Disponible
+            </p>
+        
+        </div>
+        
+        <div *ngFor="let q of User.finishQuests">
+            <p>{{q._id}}</p>
+            <div *ngFor="let i of User.quests ">
+                
+                <div *ngIf="quest._id != q._id ">
+                    <p>
+                        Status : Disponible
+                    </p>
+                    <div *ngIf="quest._id != i._id">
+                        <p>
+                            Status : Disponible
+                        </p>
+                        <button
+                            type="button" 
+                            [disabled]="quest.status === 'En cours'"
+                            (click)="AcceptQuest(quest._id)">
+                            Accepter 
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <div *ngIf="Condition">
+            <p>
+                Status : Disponible
+            </p>
+            <button
+                type="button" 
+                [disabled]="quest.status === 'En cours'"
+                (click)="AcceptQuest(quest._id)">
+                Accepter 
+            </button>
+        </div>
+        
+        <p>Récompence : {{quest.credit}} pieces</p> 
+        <div *ngIf="Condition">
+            <button
+                type="button" 
+                [disabled]="quest.status === 'En cours'"
+                (click)="AcceptQuest(quest._id)">
+                Accepter 
+            </button>
+        </div >
+        
+        <br>
+    </div>   -->
 </div>
  

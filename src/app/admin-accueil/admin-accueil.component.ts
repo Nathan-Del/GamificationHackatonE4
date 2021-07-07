@@ -56,6 +56,10 @@ export class AdminAccueilComponent implements OnInit {
     this.router.navigateByUrl(`/admin/modifQuest/${id}`)
   }
 
+  UserQuest(){
+    this.router.navigateByUrl(`/admin/userQuest`)
+  }
+
   DeleteQuest(id: number){
     this.dataService.deleteQuest(id).subscribe(
       (response: any) =>

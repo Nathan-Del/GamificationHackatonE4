@@ -14,6 +14,10 @@ export class EleveAccueilComponent implements OnInit {
   userIDsession: string = "";
   User: any;
   quests: any;
+  DispoCondition: Boolean;
+  EnCourCondition: Boolean;
+  FinCondition: Boolean;
+
   
 
   constructor(private dataService: DataService, private router: Router,  private _router: Router, private _location: Location) { }
@@ -42,19 +46,70 @@ export class EleveAccueilComponent implements OnInit {
       {
         console.log("User Response : ", UserResponse);
         this.User = UserResponse;
+
+
+        //GET ALL QUEST
+        this.dataService.getQuest().subscribe(
+          (response: any) => 
+          {
+            console.log("Quest Response : ", response);
+            this.quests = response;
+            for(let i = 0; i < this.quests.length; i++){
+
+              console.log("quests tab : ", this.quests[i]._id);
+              //console.log("UserResponse quests : ", UserResponse.quests.length);
+
+              for(let u = 0; u < UserResponse.quests.length; u++){
+                console.log("fin : ", UserResponse.finishQuests[u]);
+                console.log("quest : ", UserResponse.quests[u]._id)
+                // if(this.quests[i]._id != UserResponse.quests[u]._id || this.quests[i]._id != UserResponse.finishQuests[u])
+                // {
+                //   this.Condition = true;
+                // }
+                // else{
+                //   this.Condition = false;
+                // }
+                
+                
+                if(this.quests[i]._id != UserResponse.quests[u]._id){
+
+                  if(this.quests[i]._id != UserResponse.finishQuests[u]){
+                    console.log("DISPO");
+                    this.DispoCondition = true;
+                    this.FinCondition = false;
+                    this.EnCourCondition = false;
+                  }
+                  else{
+                    console.log("FIN");
+                    this.FinCondition = true;
+                    this.DispoCondition = false;
+                    this.EnCourCondition = false;
+                  }
+
+
+                  
+                }else{
+                  console.log("EN COURS");
+                  this.EnCourCondition = true;
+                  this.DispoCondition = false;
+                  this.FinCondition = false;
+                }
+
+              }
+            }
+            // console.log("tab : ", this.quests);
+          }
+        )
+        
+        
+        
       }
     )
 
+    //for (let pas = 0; pas < 5; pas++)
 
-    //GET ALL QUEST
-    this.dataService.getQuest().subscribe(
-      (response: any) => 
-      {
-        console.log("Quest Response : ", response);
-        this.quests = response;
-        console.log("tab : ", this.quests);
-      }
-    )
+    
+    
 
   }
 
@@ -74,13 +129,30 @@ export class EleveAccueilComponent implements OnInit {
   // //   this.http.put<Article>('https://jsonplaceholder.typicode.com/posts/1', body)
 
   AcceptQuest(id){
-    var statusQuest = { status: 'En cours'};
-    this.dataService.putQuest(id, statusQuest).subscribe(
+    //var statusQuest = { status: 'En cours'};
+    var tabQuests: any [] = [];
+    
+
+    this.dataService.getUser(this.userIDsession, this.tokenSession).subscribe(
       (response: any) =>
       {
-        console.log("Accept Quest : ", response);
+        response.quests.push(id);
+        tabQuests = response.quests;
+        var updateQuests = {
+          quests: tabQuests
+        }
+        
+        this.dataService.putUser(this.userIDsession, updateQuests, this.tokenSession).subscribe(
+          (response: any) =>
+          {
+            console.log("response update credits : ", response);
+          }
+        )
+
       }
     )
+
+    
     this.reloadPage();
   }
 

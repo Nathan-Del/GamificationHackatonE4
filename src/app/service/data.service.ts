@@ -18,7 +18,7 @@ export class DataService {
       };
     return this.http.get(`http://localhost:3000/users/${id}`, httpOptions);
   }  
-  putUser(id: number, body: any, auth_token: string){
+  putUser(id: string, body: any, auth_token: string){
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
@@ -38,6 +38,16 @@ export class DataService {
     return this.http.post(`http://localhost:3000/login`, body, httpOptions);
   } 
   
+  getAllUser(auth_token: string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${auth_token}`
+        })
+      };
+    return this.http.get(`http://localhost:3000/users`, httpOptions);
+  }
   
 
   //QUEST

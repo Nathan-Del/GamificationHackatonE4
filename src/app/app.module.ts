@@ -12,6 +12,7 @@ import { AdminAddQuestComponent } from './admin-add-quest/admin-add-quest.compon
 import { AdminModifQuestComponent } from './admin-modif-quest/admin-modif-quest.component';
 import { AdminShopComponent } from './admin-shop/admin-shop.component';
 import { AdminModifShopComponent } from './admin-modif-shop/admin-modif-shop.component';
+import { AdminUserQuestsComponent } from './admin-user-quests/admin-user-quests.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminModifShopComponent } from './admin-modif-shop/admin-modif-shop.com
     AdminAddQuestComponent,
     AdminModifQuestComponent,
     AdminShopComponent,
-    AdminModifShopComponent
+    AdminModifShopComponent,
+    AdminUserQuestsComponent
   ],
   imports: [
     BrowserModule,
