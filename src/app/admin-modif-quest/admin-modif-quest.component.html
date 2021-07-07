@@ -1,0 +1,45 @@
+<p>admin-modif-quest works!</p>
+
+<button 
+    type="submit"
+    (click)="Logout()">
+    Logout
+</button>
+<br>
+<br>
+<button 
+    type="button"
+    (click)="AdminAccueil()">
+    Accueil Admin
+</button>
+<br>
+<br>
+<div>
+    <form action="">
+        <input 
+            type="text"
+            name="name"
+            placeholder="Nom de la quête"
+            [(ngModel)]="inputNameQuest">
+        <input 
+            type="text"
+            name="description"
+            placeholder="Description"
+            [(ngModel)]="inputDescriptionQuest">
+        <input 
+            type="text"
+            name="status"
+            placeholder="Status"
+            [(ngModel)]="inputStatusQuest">
+        <input 
+            type="number"
+            name="credit"
+            placeholder="Récompence"
+            [(ngModel)]="inputCreditQuest">
+        <button
+            type="submit"
+            (click)="ModifQuest()">
+            Modifier la quête
+        </button>
+    </form>
+</div>

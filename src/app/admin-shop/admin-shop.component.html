@@ -1,0 +1,62 @@
+<p>admin-shop works!</p>
+
+<button 
+    type="submit"
+    (click)="Logout()">
+    Logout
+</button>
+<br>
+<br>
+<button
+    type="button" 
+    (click)="AccueilAdmin()">
+    Accueil Admin
+</button>
+<br>
+<div>
+    <h3>Créer un produit : </h3>
+    <form>
+        <input 
+            type="text"
+            name="name"
+            placeholder="Nom du produit"
+            [(ngModel)]="inputNameProduct">
+        <input 
+            type="text"
+            name="description"
+            placeholder="Description"
+            [(ngModel)]="inputDescriptionProduct">
+        <input 
+            type="number"
+            name="price"
+            placeholder="Prix"
+            [(ngModel)]="inputPriceProduct">
+        <button
+            type="submit"
+            (click)="CreateProduct()">
+            Créer le produit
+        </button>
+    </form>
+</div>
+
+<br>
+<br>
+<div>
+    <h3>Listes des produits : </h3>
+    <div *ngFor="let product of products">
+    <h5>Nom : {{product.name}}</h5>
+    <p>Description : {{product.description}}</p>
+    <p>Prix : {{product.price}} pieces</p>
+    <button
+        type="button" 
+        (click)="ModifProduct(product._id)">
+        Modifier 
+    </button>
+    <button
+        type="button" 
+        (click)="DeleteProduct(product._id)">
+        Supprimer 
+    </button>
+    <br>
+</div> 
+</div>

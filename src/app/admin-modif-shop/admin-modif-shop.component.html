@@ -1,0 +1,39 @@
+<p>admin-modif-shop works!</p>
+<button 
+    type="submit"
+    (click)="Logout()">
+    Logout
+</button>
+<br>
+<br>
+<button 
+    type="button"
+    (click)="AdminAccueil()">
+    Accueil Admin
+</button>
+<br>
+<br>
+<div>
+    <form action="">
+        <input 
+            type="text"
+            name="name"
+            placeholder="Nom du produit"
+            [(ngModel)]="inputNameProduct">
+        <input 
+            type="text"
+            name="description"
+            placeholder="Description"
+            [(ngModel)]="inputDescriptionProduct">
+        <input 
+            type="number"
+            name="credit"
+            placeholder="Prix"
+            [(ngModel)]="inputPriceProduct">
+        <button
+            type="submit"
+            (click)="ModifProduct()">
+            Modifier le produit
+        </button>
+    </form>
+</div>
