@@ -1,0 +1,32 @@
+<p>admin-user-quests works!</p>
+<button 
+    type="submit"
+    (click)="Logout()">
+    Logout
+</button>
+
+<br>
+<br>
+<div *ngFor="let user of allUser">
+    <div *ngIf="user.admin == false">
+        <h3>{{user.username}}</h3>
+        <div *ngFor="let quest of user.quests">
+            <div *ngFor="let trueQuest of allQuest">
+                <div *ngIf="trueQuest._id === quest">
+                    <p>ID : {{quest}}</p>
+                    <h5>Nom : {{trueQuest.name}}</h5>
+                    <p>Description : {{trueQuest.description}}</p>
+                    <p>Récompense : {{trueQuest.credit}}</p>
+                    <button
+                        type="button" 
+                        (click)="FinishQuest(user._id, quest, trueQuest.credit)">
+                        Terminé 
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <br>
+    </div>
+    
+</div> 
