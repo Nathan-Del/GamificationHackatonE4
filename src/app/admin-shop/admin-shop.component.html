@@ -1,21 +1,40 @@
-<p>admin-shop works!</p>
-
-<button 
-    type="submit"
-    (click)="Logout()">
-    Logout
-</button>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li>
+                    <h3 class="title-navbar" >Page d'administration</h3>
+                </li>
+                <li class="nav-item active">
+                    <button 
+                        class="btn btn-outline-danger"
+                        type="button"
+                        (click)="Logout()">
+                        Logout
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button"
+                        (click)="AccueilAdmin()">
+                        Accueil Admin
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 <br>
 <br>
-<button
-    type="button" 
-    (click)="AccueilAdmin()">
-    Accueil Admin
-</button>
+<br>
+<br>
+<br>
 <br>
 <div>
+<body>
     <h3>Créer un produit : </h3>
-    <form>
+    <!-- <form>
         <input 
             type="text"
             name="name"
@@ -36,12 +55,38 @@
             (click)="CreateProduct()">
             Créer le produit
         </button>
+    </form> -->
+
+    <form>
+        <div class="form-group">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Nom du produit"
+            [(ngModel)]="inputNameProduct">
+        </div>
+        <div class="form-group">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Description"
+            [(ngModel)]="inputDescriptionProduct">
+        </div>
+        <div class="form-group">
+            <input 
+              type="number" 
+              class="form-control" 
+              placeholder="Prix"
+              [(ngModel)]="inputPriceProduct">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="CreateProduct()">
+            Créer le produit</button>
     </form>
-</div>
+
 
 <br>
 <br>
-<div>
+<!-- <div>
     <h3>Listes des produits : </h3>
     <div *ngFor="let product of products">
     <h5>Nom : {{product.name}}</h5>
@@ -59,4 +104,30 @@
     </button>
     <br>
 </div> 
-</div>
+</div> -->
+
+    <div class="pokemon-grid">
+        <div class="box" *ngFor="let product of products">
+
+            <h5>Nom : {{product.name}}</h5>
+            <p>Description : {{product.description}}</p>
+            <p>Prix : {{product.price}} 
+                <img class="logo-piece" src="../../assets/PieceMK8.png" alt="logo de piece mario">
+            </p>
+            <button
+                type="button" 
+                class="btn btn-warning"
+                (click)="ModifProduct(product._id)">
+                Modifier  
+            </button>
+            <button
+                type="button" 
+                class="btn btn-danger"
+                (click)="DeleteProduct(product._id)">
+                Supprimer  
+            </button>
+        </div>
+    </div>
+
+</body>
+    

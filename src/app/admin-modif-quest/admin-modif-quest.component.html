@@ -1,20 +1,38 @@
-<p>admin-modif-quest works!</p>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li>
+                    <h3 class="title-navbar" >Page d'administration</h3>
+                </li>
+                <li class="nav-item active">
+                    <button 
+                        class="btn btn-outline-danger"
+                        type="button"
+                        (click)="Logout()">
+                        Logout
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button"
+                        (click)="AdminAccueil()">
+                        Accueil Admin
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<button 
-    type="submit"
-    (click)="Logout()">
-    Logout
-</button>
-<br>
-<br>
-<button 
-    type="button"
-    (click)="AdminAccueil()">
-    Accueil Admin
-</button>
-<br>
-<br>
-<div>
+<!-- <div>
     <form action="">
         <input 
             type="text"
@@ -42,4 +60,36 @@
             Modifier la quête
         </button>
     </form>
-</div>
+</div> -->
+<body>
+    <div>
+        <form action="">
+            <div class="form-group">
+                    <input 
+                    type="text"
+                    class="form-control" 
+                    name="name"
+                    placeholder="Nom de la quête"
+                    [(ngModel)]="inputNameQuest">
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="description"
+                    placeholder="Description"
+                    [(ngModel)]="inputDescriptionQuest">
+                <input 
+                    type="number"
+                    class="form-control"
+                    name="credit"
+                    placeholder="Récompence"
+                    [(ngModel)]="inputCreditQuest">
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    (click)="ModifQuest()">
+                    Modifier la quête
+                </button>
+            </div>
+        </form>
+    </div> 
+</body>

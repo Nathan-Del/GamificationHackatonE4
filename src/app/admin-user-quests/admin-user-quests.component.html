@@ -1,13 +1,59 @@
-<p>admin-user-quests works!</p>
-<button 
-    type="submit"
-    (click)="Logout()">
-    Logout
-</button>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li>
+                    <h3 class="title-navbar" >Page d'administration</h3>
+                </li>
+                <li class="nav-item active">
+                    <button 
+                        class="btn btn-outline-danger"
+                        type="button"
+                        (click)="Logout()">
+                        Logout
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<body>
+    <div class="pokemon-grid">
+        <div class="box" *ngFor="let user of allUser">
+            <div *ngIf="user.admin == false">
+                <h3>{{user.username}}</h3>
+                <div *ngFor="let quest of user.quests">
+                    <div *ngFor="let trueQuest of allQuest">
+                        <div *ngIf="trueQuest._id === quest">
 
-<br>
-<br>
-<div *ngFor="let user of allUser">
+                            <h5>Nom : {{trueQuest.name}}</h5>
+                            <p>Description : {{trueQuest.description}}</p>
+                            <p>Récompense : {{trueQuest.credit}}
+                                <img class="logo-piece" src="../../assets/PieceMK8.png" alt="logo de piece mario">
+                            </p>
+                            <button
+                                type="button" 
+                                class="btn btn-success"
+                                (click)="FinishQuest(user._id, quest, trueQuest.credit)">
+                                Terminé 
+                            </button>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        </div>
+    </div>
+</body>
+
+
+<!-- <div *ngFor="let user of allUser">
     <div *ngIf="user.admin == false">
         <h3>{{user.username}}</h3>
         <div *ngFor="let quest of user.quests">
@@ -29,4 +75,4 @@
         <br>
     </div>
     
-</div> 
+</div>  -->

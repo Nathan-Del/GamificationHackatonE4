@@ -1,35 +1,76 @@
-<p>eleve-shop works!</p>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li>
+                    <h5 class="title-navbar" >Bonjour {{User.username}}</h5>
+                    <h5 
+                    class="title-navbar" >
+                    <img src="../../assets/PieceMK8.png" alt="logo de piece mario">
+                    {{User.credits}}
+                    </h5>
+                </li>
+                <li class="nav-item active">
+                    <button 
+                        class="btn btn-outline-danger"
+                        type="button"
+                        (click)="Logout()">
+                        Logout
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button"
+                        (click)="AccueilEleve()">
+                        Accueil Eleve
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-<button 
-    type="submit"
-    (click)="Logout()">
-    Logout
-</button>
-<br>
-<button 
-    type="button"
-    (click)="AccueilEleve()">
-    Accueil Eleve
-</button>
-<br>
-<br>
-<p>Bien joué {{User.username}} !!!</p>
-<p>Vous avez {{User.credits}} pieces.</p>
 
 <br>
 <br>
-<div>
-    <h3>Listes des produits :</h3>
-    <div *ngFor="let product of products">
-        <h3>Nom : {{product.name}}</h3>
-        <p>Description : {{product.description}}</p>
-        <p>Prix : {{product.price}}</p>
-        <button
-            type="button" 
-            [disabled]="User.credits <= product.price"
-            (click)="BuyProduct(product.price)">
-            Acheter 
-        </button>
-        <br>
+<!-- <p>Bien joué {{User.username}} !!!</p>
+<p>Vous avez {{User.credits}} pieces.</p> -->
+
+<br>
+<br>
+<br>
+<body>
+    <div>
+        <h3>Listes des produits :</h3>
+        <!-- <div *ngFor="let product of products">
+            <h3>Nom : {{product.name}}</h3>
+            <p>Description : {{product.description}}</p>
+            <p>Prix : {{product.price}}</p>
+            <button
+                type="button" 
+                [disabled]="User.credits <= product.price"
+                (click)="BuyProduct(product.price)">
+                Acheter 
+            </button>
+            <br>
+        </div> -->
+        <div class="pokemon-grid">
+            <div class="box" *ngFor="let product of products">
+                <h3>{{product.name}}</h3>
+                <p>Description : {{product.description}}</p>
+                <p>Prix : {{product.price}} 
+                    <img class="logo-piece" src="../../assets/PieceMK8.png" alt="logo de piece mario">
+                </p>
+                <button
+                    type="button" 
+                    class="btn-success"
+                    [disabled]="User.credits <= product.price"
+                    (click)="BuyProduct(product.price)">
+                    Acheter 
+                </button>
+            </div>
+        </div>
     </div>
-</div>
+</body>
+

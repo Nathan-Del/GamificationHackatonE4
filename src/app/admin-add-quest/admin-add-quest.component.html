@@ -1,5 +1,31 @@
-<p>admin-add-quest works!</p>
-<button 
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li>
+                    <h3 class="title-navbar" >Page d'administration</h3>
+                </li>
+                <li class="nav-item active">
+                    <button 
+                        class="btn btn-outline-danger"
+                        type="button"
+                        (click)="Logout()">
+                        Logout
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button"
+                        (click)="AdminAccueil()">
+                        Accueil Admin
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- <button 
     type="submit"
     (click)="Logout()">
     Logout
@@ -10,10 +36,45 @@
     type="button"
     (click)="AdminAccueil()">
     Accueil Admin
-</button>
+</button> -->
 <br>
 <br>
-<div>
+<br>
+<br>
+<body>
+    <form>
+        <div class="form-group">
+        <input 
+            type="text" 
+            class="form-control" 
+            id="exampleInputEmail1" 
+            aria-describedby="emailHelp" 
+            placeholder="Nom de la quête"
+            [(ngModel)]="inputNameQuest">
+        </div>
+        <div class="form-group">
+        <input 
+            type="text" 
+            class="form-control" 
+            id="exampleInputPassword1" 
+            placeholder="Description"
+            [(ngModel)]="inputDescriptionQuest">
+        </div>
+        <div class="form-group">
+            <input 
+            type="number" 
+            class="form-control" 
+            id="exampleInputPassword1" 
+            placeholder="Récompence"
+            [(ngModel)]="inputCreditQuest">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="CreateQuest()">
+            Créer la quête</button>
+    </form>
+</body>
+
+
+<!-- <div>
     <form action="">
         <input 
             type="text"
@@ -36,4 +97,4 @@
             Créer la quête
         </button>
     </form>
-</div>
+</div> -->

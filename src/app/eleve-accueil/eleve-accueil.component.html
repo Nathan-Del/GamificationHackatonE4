@@ -1,27 +1,65 @@
-<p>eleve-accueil works!</p>
-<button 
-    type="submit"
-    (click)="Logout()">
-    Logout
-</button>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li>
+                    <h5 class="title-navbar" >Bonjour {{User.username}}</h5>
+                    <h5 
+                    class="title-navbar" >
+                    <img src="../../assets/PieceMK8.png" alt="logo de piece mario">
+                    {{User.credits}}
+                    </h5>
+                </li>
+                <li class="nav-item active">
+                    <button 
+                        class="btn btn-outline-danger"
+                        type="button"
+                        (click)="Logout()">
+                        Logout
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button 
+                        class="btn btn-outline-primary" 
+                        type="button"
+                        (click)="Shop()">
+                        Magasin
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
 <br>
-<button 
-    type="button"
-    (click)="Shop()">
-    Magasin
-</button>
 <br>
 <br>
-<p>Bonjour {{User.username}}</p>
-<p>Pieces : {{User.credits}}</p>
-{{FinCondition}}
-{{EnCourCondition}}
-{{DispoCondition}}
+<br>
+<br>
+<br>
+<body>
+    <h3>Listes des quêtes :</h3>
+    <div class="pokemon-grid">
+        <div class="box" *ngFor="let quest of quests">
+            <h4>{{quest.name}}</h4>
+            <p>Description : {{quest.description}}</p>
+            <p>Récompence : {{quest.credit}} <img class="logo-piece" src="../../assets/PieceMK8.png" alt="logo de piece mario"></p>
+            <button
+                type="button" 
+                class="btn btn-success"
+                (click)="AcceptQuest(quest._id)">
+                Accepter
+            </button>
+        </div>
+    </div>
+</body>
+
+
 
 <br>
 <br>
 <div>
-    <h3>Listes des quêtes :</h3>
+    <!-- <h3>Listes des quêtes :</h3> -->
     <!-- <div *ngFor="let quest of quests">
         <h4>Nom : {{quest.name}}</h4>
         <p>Description : {{quest.description}}</p>
@@ -54,7 +92,7 @@
 
     </div>   -->
 
-    <div *ngFor="let quest of quests">
+    <!-- <div *ngFor="let quest of quests">
         <h4>Nom : {{quest.name}}</h4>
         <p>Description : {{quest.description}}</p>
         <p>Récompence : {{quest.credit}} pieces</p>
@@ -67,7 +105,7 @@
         </button>
         
 
-    </div> 
+    </div>  -->
 
 
     <!-- <div *ngFor="let quest of quests">
